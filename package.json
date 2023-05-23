@@ -10,6 +10,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^2.4.1"
+    "@astrojs/mdx": "^0.19.2",
+    "astro": "^2.5.1",
+    "sass": "^1.62.1",
+    "sharp": "^0.32.1"
+  },
+  "devDependencies": {
+    "@iconify-json/mdi": "^1.1.52",
+    "unplugin-icons": "^0.16.1"
   }
 }
