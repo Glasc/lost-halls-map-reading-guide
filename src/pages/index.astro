@@ -7,6 +7,11 @@ import Image from "astro/components/Image.astro"
 const entry = await getEntryBySlug("guide", "content")
 const { Content } = await entry.render()
 
+/* 
+TODO: theme switcher
+TODO: spanish support
+*/
+
 const links = [
   { slug: "preface", title: "Preface" },
   { slug: "first-step-in-map-reading", title: "First Step" },
