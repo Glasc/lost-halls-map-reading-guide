@@ -1,8 +1,7 @@
 ---
 import Layout from "../components/Layout.astro"
 import { getEntryBySlug } from "astro:content"
-import lostHallsPortal from "../assets/lost-halls-portal.png"
-import Image from "astro/components/Image.astro"
+import ExternalLink from "~icons/mdi/open-in-new"
 
 const entry = await getEntryBySlug("guide", "content")
 const { Content } = await entry.render()
@@ -29,7 +28,11 @@ const links = [
       <summary>Details</summary>
       {
         links.map((link) => {
-          return <a href={`#${link.slug}`} class="mobile-nav-link">{link.title}</a>
+          return (
+            <a href={`#${link.slug}`} class="mobile-nav-link">
+              {link.title}
+            </a>
+          )
         })
       }
     </details>
@@ -40,7 +43,13 @@ const links = [
           links.map((link) => {
             return (
               <li>
-                <a href={`#${link.slug}`} id={`${link.slug}-link`} class="desktop-nav-link">{link.title}</a>
+                <a
+                  href={`#${link.slug}`}
+                  id={`${link.slug}-link`}
+                  class="desktop-nav-link"
+                >
+                  {link.title}
+                </a>
               </li>
             )
           })
@@ -54,55 +63,19 @@ const links = [
   <footer>
     <div>
       <p>
-        Especially thanks to <span>Blazepig#0563</span> from the Lost Halls discord for the original guide.
-        </p>
-         <p class="join-paragraph">Click <a href="https://discord.gg/losthalls">here</a> to join Lost Halls discord.</p>
+        Especially thanks to <span>Blazepig#0563</span> from the Lost Halls discord
+        for the original guide.
+      </p>
+      <p class="join-paragraph">
+        Click
+        <span class="discord-link">
+          <a href="https://discord.gg/losthalls" target="_blank"> here</a>
+          <ExternalLink font-size={15} />
+        </span> to join Lost Halls discord.
+      </p>
     </div>
   </footer>
 </Layout>
-
-<script>
-  const detailsRef = document.querySelector("details")
-  const body = document.querySelector("body")!
-
-  body.addEventListener("click", (e) => {
-    const isSummaryButton = (e.target as HTMLElement).tagName === "SUMMARY"
-    if (isSummaryButton) return 
-    detailsRef?.removeAttribute("open")
-  })
-
-  document.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      detailsRef?.removeAttribute("open")
-    })
-  })
-
-  const clearActiveLinks = () => {
-    const summaryLinksRefs = document.querySelectorAll(".desktop a")
-    summaryLinksRefs.forEach((link) => {
-      link.removeAttribute("active")
-    })
-  }
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return
-        const slug = entry.target.id
-        clearActiveLinks()
-        document.querySelector(`#${slug}-link`)?.setAttribute("active", "")
-      })
-    },
-    {
-      rootMargin: "0px 0px -60% 0px",
-      threshold: 0.5,
-    } 
-  )
-
-  document.querySelectorAll("h2, h3").forEach((section) => {
-    observer.observe(section)
-  })
-</script>
 
 <style>
   .container {
@@ -210,6 +183,17 @@ const links = [
     font-size: 1.4rem;
   }
 
+  footer .discord-link {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    gap: 0.05em;
+  }
+
+  footer .discord-link a:visited {
+    color: unset;
+  }
+
   @media (max-width: 700px) {
     .container {
       grid-template-columns: 1fr;
@@ -225,7 +209,7 @@ const links = [
     }
 
     main {
-      margin: none; 0
+      margin: none;
     }
 
     footer {
@@ -237,3 +221,46 @@ const links = [
     width: auto;
   }
 </style>
+
+<script>
+  const detailsRef = document.querySelector("details")
+  const body = document.querySelector("body")!
+
+  body.addEventListener("click", (e) => {
+    const isSummaryButton = (e.target as HTMLElement).tagName === "SUMMARY"
+    if (isSummaryButton) return
+    detailsRef?.removeAttribute("open")
+  })
+
+  document.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      detailsRef?.removeAttribute("open")
+    })
+  })
+
+  const clearActiveLinks = () => {
+    const summaryLinksRefs = document.querySelectorAll(".desktop a")
+    summaryLinksRefs.forEach((link) => {
+      link.removeAttribute("active")
+    })
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return
+        const slug = entry.target.id
+        clearActiveLinks()
+        document.querySelector(`#${slug}-link`)?.setAttribute("active", "")
+      })
+    },
+    {
+      rootMargin: "0px 0px -60% 0px",
+      threshold: 0.5,
+    }
+  )
+
+  document.querySelectorAll("h2, h3").forEach((section) => {
+    observer.observe(section)
+  })
+</script>
