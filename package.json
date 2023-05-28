@@ -13,7 +13,8 @@
     "@astrojs/mdx": "^0.19.2",
     "astro": "^2.5.1",
     "sass": "^1.62.1",
-    "sharp": "^0.32.1"
+    "sharp": "^0.32.1",
+    "theme-change": "^2.5.0"
   },
   "devDependencies": {
     "@iconify-json/mdi": "^1.1.52",

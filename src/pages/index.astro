@@ -2,6 +2,7 @@
 import Layout from "../components/Layout.astro"
 import { getEntryBySlug } from "astro:content"
 import ExternalLink from "~icons/mdi/open-in-new"
+import LightBulb from "~icons/mdi/lightbulb-on-outline"
 
 const entry = await getEntryBySlug("guide", "content")
 const { Content } = await entry.render()
@@ -23,6 +24,16 @@ const links = [
 ---
 
 <Layout>
+  <section class="theme-switcher-bar">
+    <button
+      class="theme-switcher"
+      data-toggle-theme=",dark"
+      data-act-class="ACTIVECLASS"
+    >
+      <LightBulb font-size={25} class="theme-switcher-icon" />
+    </button>
+  </section>
+
   <div class="container">
     <details>
       <summary>Details</summary>
@@ -90,17 +101,41 @@ const links = [
     align-items: flex-start;
   }
 
+  .theme-switcher-bar {
+    display: flex;
+    justify-content: flex-end;
+    width: 90%;
+    max-width: 65rem;
+    padding: 1em 0;
+    margin: 0 auto;
+    position: sticky;
+    top: 0;
+    background-color: var(--bg-primary);
+    z-index: 1;
+  }
+
+  .theme-switcher {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .theme-switcher-icon {
+    color: var(--bg-primary-content);
+  }
+
   details {
     cursor: pointer;
     position: sticky;
     top: 0.5em;
     user-select: none;
-    background-color: #1d222d;
+    background-color: var(--details-color);
     padding: 0.25em 0.5em;
-    z-index: 1;
+    z-index: 2;
     border-radius: 0.25em;
     margin: 0.5em 0;
     display: none;
+    shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   }
 
   details > a:nth-child(2) {
@@ -114,9 +149,9 @@ const links = [
     display: block;
     position: sticky;
     top: 2.25rem;
-    border: 2px solid #14161f;
+    border: var(--navbar-desktop-border);
     border-radius: 0.25em;
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    background-color: white;
   }
 
   ul {
@@ -152,7 +187,6 @@ const links = [
   }
 
   main {
-    margin: 1.25em 0;
   }
 
   footer {
@@ -214,6 +248,14 @@ const links = [
 
     footer {
       padding: 1.5em;
+    }
+
+    .theme-switcher-bar {
+      padding: 1em 0;
+      margin: 0 auto;
+      position: relative;
+      background-color: var(--bg-primary);
+      z-index: 1;
     }
   }
 

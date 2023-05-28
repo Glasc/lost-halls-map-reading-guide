@@ -15,6 +15,23 @@ import ArrowUp from "~icons/mdi/arrow-up-circle-outline"
     <meta name="msapplication-TileColor" content="#da532c" />
     <meta name="theme-color" content="#ffffff" />
     <title>Lost Halls - Map reading</title>
+    <script is:inline>
+      // ☝️ This script prevent the FART effect.
+      if (localStorage.getItem("theme") === null) {
+        document.documentElement.setAttribute("data-theme", "light")
+      } else
+        document.documentElement.setAttribute(
+          "data-theme",
+          localStorage.getItem("theme")
+        )
+      // "theme" LocalStorage value is set by the package to remember user preference.
+      // The value is checked and applyed before rendering anything.
+    </script>
+    <script>
+      import { themeChange } from "theme-change"
+      themeChange()
+      // 👆 you could import the CDN directly instead of these two lines
+    </script>
   </head>
   <body>
     <slot />
@@ -26,12 +43,34 @@ import ArrowUp from "~icons/mdi/arrow-up-circle-outline"
 
 <style is:global lang="scss">
   @import url(https://fonts.googleapis.com/css?family=Lora:regular,700);
+  @import url(https://fonts.googleapis.com/css?family=Hanken+Grotesk:regular,500,700);
 
   :root {
+    --bg-primary: #f5f5f5;
+    --bg-secondary: #f8f8f8;
+    --bg-primary-content: #333333;
+    --header-border: 1px solid #dddddd;
+    --button-up-color: #0066cc;
+    --button-up-color-hover: #0088ff;
+    --main-header-color: #000000;
+    --subheader-color: #666666;
+    --details-color: #f8f5f5;
+    --navbar-desktop-border: 2px solid #eaeaea;
+    --icon-color: "#333333";
+  }
+
+  html[data-theme="dark"] {
     --bg-primary: #0e1016;
     --bg-secondary: #12151c;
     --bg-primary-content: #acb2c9;
-    color-scheme: dark;
+    --header-border: 1px solid #292e40;
+    --button-up-color: #98b2ff;
+    --button-up-color-hover: #b7c9ff;
+    --main-header-color: #d0d4de;
+    --subheader-color: #eceef3;
+    --details-color: #1d222d;
+    --navbar-desktop-border: 2px solid #14171f;
+    --icon-color: "#ffffff";
   }
 
   * {
@@ -47,11 +86,11 @@ import ArrowUp from "~icons/mdi/arrow-up-circle-outline"
   }
 
   body {
-    font-family: "Lora", sans-serif;
-    background-color: #0e1016;
+    font-family: "Hanken Grotesk", "Lora", sans-serif;
+    background-color: var(--bg-primary);
     opacity: 1;
     background-image: linear-gradient(#12141c 0.9px, transparent 0.9px),
-      linear-gradient(to right, #12141c 0.9px, #0e1016 0.9px);
+      linear-gradient(to right, #12141c 0.9px, var(--bg--primary) 0.9px);
     background-size: 18px 18px;
     color: var(--bg-primary-content);
     display: flow-root;
@@ -78,7 +117,7 @@ import ArrowUp from "~icons/mdi/arrow-up-circle-outline"
     bottom: 2.5em;
     right: 3em;
     z-index: 2;
-    color: #98b2ff;
+    color: var(--button-up-color);
     background-color: var(--bg-secondary);
     display: flex;
     justify-content: center;
@@ -86,11 +125,11 @@ import ArrowUp from "~icons/mdi/arrow-up-circle-outline"
     border-radius: 12rem;
     transition: color 0.3s ease-in-out;
     &:visited {
-      color: #98b2ff;
+      color: var(--button-up-color);
     }
     &:hover {
       background-color: var(--bg-secondary);
-      color: #b7c9ff;
+      color: var(--button-up-color-hover);
       transition: color 0.3s ease-in-out;
     }
     &[hidden] {
@@ -106,8 +145,8 @@ import ArrowUp from "~icons/mdi/arrow-up-circle-outline"
   h6 {
     margin: 0;
     padding-top: 1em 0;
-    color: #d0d4de;
-    border-bottom: 1px solid #292e40;
+    color: var(--subheader-color);
+    border-bottom: var(--header-border);
   }
 
   h1:before {
@@ -149,7 +188,7 @@ import ArrowUp from "~icons/mdi/arrow-up-circle-outline"
   h1 {
     padding-top: 0;
     line-height: 1.25;
-    color: #eceef3;
+    color: var(--main-header-color);
     border-bottom: none;
     margin: 0;
     margin-bottom: 0.75em;
@@ -188,5 +227,5 @@ import ArrowUp from "~icons/mdi/arrow-up-circle-outline"
     } else {
       button.setAttribute("hidden", "")
     }
-  }, 500)
+  }, 1000)
 </script>
