@@ -42,7 +42,6 @@ import ArrowUp from "~icons/mdi/arrow-up-circle-outline"
 </html>
 
 <style is:global lang="scss">
- 
   @import url(https://fonts.googleapis.com/css?family=Hanken+Grotesk:regular,500,700);
 
   :root {
@@ -53,7 +52,7 @@ import ArrowUp from "~icons/mdi/arrow-up-circle-outline"
     --header-border: 1px solid #dddddd;
     --button-up-color: #eba574;
     --button-up-color-hover: #dc8446;
-    --main-header-color: #0f2134;
+    --main-header-color: #0e1f31;
     --subheader-color: #11263c;
     --details-color: #f8f5f5;
     --navbar-desktop-bg: #f9f8f8;
@@ -131,22 +130,22 @@ import ArrowUp from "~icons/mdi/arrow-up-circle-outline"
     z-index: 2;
     color: var(--button-up-color);
     background-color: var(--bg-secondary);
-    display: flex;
-    justify-content: center;
-    align-items: center;
     border-radius: 12rem;
-    transition: color 0.3s ease-in-out;
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
     &:visited {
       color: var(--button-up-color);
     }
     &:hover {
+      transition: all 0.5s ease-in-out;
       background-color: var(--bg-secondary);
       color: var(--button-up-color-hover);
-      transition: color 0.3s ease-in-out;
     }
-    &[hidden] {
-      display: none;
-    }
+  }
+
+  .hidden {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
   }
 
   h1,
@@ -235,9 +234,9 @@ import ArrowUp from "~icons/mdi/arrow-up-circle-outline"
     const button = document.querySelector(".button-up")!
     const currentScrollPosition = window.scrollY
     if (currentScrollPosition > 1500) {
-      button.removeAttribute("hidden")
+      button.classList.remove("hidden")
     } else {
-      button.setAttribute("hidden", "")
+      button.classList.add("hidden")
     }
-  }, 1000)
+  }, 300)
 </script>
