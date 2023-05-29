@@ -42,35 +42,47 @@ import ArrowUp from "~icons/mdi/arrow-up-circle-outline"
 </html>
 
 <style is:global lang="scss">
-  @import url(https://fonts.googleapis.com/css?family=Lora:regular,700);
+ 
   @import url(https://fonts.googleapis.com/css?family=Hanken+Grotesk:regular,500,700);
 
   :root {
-    --bg-primary: #f5f5f5;
+    --bg-primary: #ffffff;
     --bg-secondary: #f8f8f8;
-    --bg-primary-content: #333333;
+    --bg-primary-content: #3f424a;
+    --bg-primary-content-accent: black;
     --header-border: 1px solid #dddddd;
-    --button-up-color: #0066cc;
-    --button-up-color-hover: #0088ff;
-    --main-header-color: #000000;
-    --subheader-color: #666666;
+    --button-up-color: #eba574;
+    --button-up-color-hover: #dc8446;
+    --main-header-color: #0f2134;
+    --subheader-color: #11263c;
     --details-color: #f8f5f5;
-    --navbar-desktop-border: 2px solid #eaeaea;
+    --navbar-desktop-bg: #f9f8f8;
+    --navbar-desktop-border: 1px solid #eaeaea;
+    --navbar-link-bg: #fae9dd;
+    --navbar-link-bg-hover: #ffc69d;
     --icon-color: "#333333";
+    --footer-bg: #f8f8f8;
+    --footer-color-accent: #dc8446;
   }
 
   html[data-theme="dark"] {
     --bg-primary: #0e1016;
     --bg-secondary: #12151c;
     --bg-primary-content: #acb2c9;
+    --bg-primary-content-accent: white;
     --header-border: 1px solid #292e40;
     --button-up-color: #98b2ff;
     --button-up-color-hover: #b7c9ff;
-    --main-header-color: #d0d4de;
-    --subheader-color: #eceef3;
+    --main-header-color: #eceef3;
+    --subheader-color: #d9dbe2;
     --details-color: #1d222d;
-    --navbar-desktop-border: 2px solid #14171f;
+    --navbar-desktop-bg: transparent;
+    --navbar-desktop-border: 1px solid #1a1e28;
+    --navbar-link-bg: rgba(158, 158, 255, 0.123);
+    --navbar-link-bg-hover: #9e9eff58;
     --icon-color: "#ffffff";
+    --footer-bg: #0b0d11;
+    --footer-color-accent: #98b2ff;
   }
 
   * {
