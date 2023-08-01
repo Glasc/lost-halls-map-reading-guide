@@ -1,5 +1,4 @@
 ---
-title: "xd"
 ---
 
 # Lost Halls Map Reading Guide

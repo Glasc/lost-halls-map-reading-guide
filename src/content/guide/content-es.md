@@ -1,12 +1,11 @@
 ---
-title: "xd"
 ---
 
 # Lost Halls Map Reading Guide
 
 ## Preface
 
-Before explaining anything in the map reading guide it is good to preface this with noting that map reading is not guaranteed. You are not guaranteed to hit a 0 pot every run when leading. These rules and guides are there to help you make the best educated guess on which path is defender and which paths are pot splits. Sometimes the correct call in a run is the wrong path and vice versa.
+Before explaining anything in the map reading guide it is good to preface this with nothing that map reading is not guaranteed. You are not guaranteed to hit a 0 pot every run when leading. These rules and guides are there to help you make the best educated guess on which path is defender and which paths are pot splits. Sometimes the correct call in a run is the wrong path and vice versa.
 
 Map Reading Rules That Are Always True - Defender
 
